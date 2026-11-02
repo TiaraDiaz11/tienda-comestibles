@@ -75,3 +75,39 @@ editarImagen.addEventListener("change", () => {
 document.getElementById("cancelar-edicion").addEventListener("click", () => { modalEditar.close(); });
 //tobi, lo que me haces hacer.
 modalEditar.addEventListener("close", () => { liberarImagenTemporal(); });
+
+//parte de la barra de busqueda
+
+const buscadorProductos = document.getElementById("buscar-productos");
+const resultadoBusqueda = document.getElementById("resultado-busqueda");
+
+const filasProductos = Array.from( document.querySelectorAll("#tabla-productos > tr"));
+
+function normalizarTexto(texto) {
+    return texto
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+}
+
+function filtrarProductos() {
+    const busqueda = normalizarTexto(buscadorProductos.value);
+
+    const coincidencias = filasProductos.filter((fila) => {
+        const nombre = normalizarTexto(fila.dataset.nombre);
+        const marca = normalizarTexto(fila.dataset.marca);
+
+        return nombre.includes(busqueda) || marca.includes(busqueda);
+    });
+
+    filasProductos.forEach((fila) => {fila.hidden = true;});
+
+    coincidencias.forEach((fila) => {fila.hidden = false;});
+
+    resultadoBusqueda.textContent = coincidencias.length === 0 ? "No se encontraron productos." : `Mostrando ${coincidencias.length} de ${filasProductos.length} productos.`;
+}
+
+buscadorProductos.addEventListener("input", filtrarProductos);
+
+filtrarProductos();
