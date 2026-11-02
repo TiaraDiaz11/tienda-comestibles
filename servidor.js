@@ -173,14 +173,27 @@ app.post("/productos/:id/editar", subirImagen.single("imagen"), (req, res) => {
 });
 
 app.get("/catalogo", (req, res) => {
-    database.all("SELECT * FROM productos", [], (err, productos) => {
+    const buscar = (req.query.buscar || "").trim();
+
+    const sql = `
+        SELECT * FROM productos
+        WHERE LOWER(nombre) LIKE LOWER(?)
+        ORDER BY nombre ASC
+    `;
+
+    database.all(sql, [`%${buscar}%`], (err, productos) => {
         if (err) {
             console.error(err.message);
             return res.status(500).send("Error al consultar los productos");
         }
-        res.render("catalogo", { prods: productos });
+
+        res.render("catalogo", {
+            prods: productos,
+            buscar: buscar
+        });
     });
 });
+
 
 app.listen(3000, () =>  {
     console.log("Server funcionando")}

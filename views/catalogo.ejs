@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de productos</title>
     <link rel="stylesheet" href="/css/catalogo.css">
+    <script src="https://code.iconify.design/iconify-icon/3.0.3/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <div class="barra">
@@ -18,8 +20,12 @@
     </div>   
     <div class="catalogo-productos">
         <h2 class="catalogo-title">Catálogo de productos</h2>
-        <input class="barra-busqueda" type="text" placeholder="Buscar productos...">
     </div>
+    <form action="/catalogo" method="GET" class="busqueda">
+        <i class="bi bi-search"></i>
+        <input class="barra-busqueda" type="text" name="buscar" placeholder="Buscar productos..." value="<%= buscar || '' %>">
+        <button type="submit" class="boton-buscar">Buscar</button>
+    </form>
     <ul class="product-grid">
         <% prods.forEach((prod, i) => { %>
             <li class="product-card" style="--i: <%= i %>">
@@ -28,7 +34,7 @@
                 <h4><%= prod.marca %></h4>
                 <h2>$<%= prod.precio %></h2>
                 <p class="stock">Stock: <%= prod.stock %></p>
-                <button>Ver Detalles</button>
+                <button class="boton">Ver Detalles</button>
             </li>
         <% }) %>
     </ul>
