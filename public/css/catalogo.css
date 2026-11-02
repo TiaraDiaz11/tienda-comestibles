@@ -18,6 +18,23 @@ body{
     color: rgb(116, 86, 48);
     font-size: 40px;
 }
+.catalogo-productos{
+    display: flex;
+    margin-right: auto;
+}
+.busqueda {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 8px 12px;
+    width: 300px;
+}
+.busqueda i {
+    font-size: 18px;
+    color: #777;
+    margin-right: 10px;
+}
 .catalogo-title{
     text-align: left;
     font-size: 20px;
@@ -41,7 +58,7 @@ body{
     display: flex;
     flex-direction: column;
     min-width: 0;
-    padding: 20px;
+    padding: 12px;
     background: transparent;
     border: 1px solid #383d3d;
     border-radius: 14px;
@@ -67,26 +84,32 @@ body{
 }
 
 /* Marca */
-.product-card p {
-    margin: 0 0 16px;
+product-card p {
+    margin: 0 0 8px;
     color: white;
     font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.product-card h4{
-    margin: 0 0 16px;
+
+.product-card h4 {
+    margin: 0 0 8px;
     color: #383d3d;
     font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-/* Precio */
+
 .product-card h2 {
     margin: auto 0 0;
-    padding-top: 8px;
+    padding-top: 4px;
     color: black;
     font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .stock {
     background-color: green;
     color: white;
+    margin: 3px 0;
+    width: 80px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -95,6 +118,13 @@ body{
     height: 190px;
     width: 100%;
     text-align: center;
+}
+.boton{
+    background-color: #2f00af;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 4px;
+    margin-top: 8px;
 }
 .barra-a{
     color: white;
