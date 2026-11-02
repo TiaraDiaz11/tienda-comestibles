@@ -73,5 +73,5 @@ editarImagen.addEventListener("change", () => {
 });
 
 document.getElementById("cancelar-edicion").addEventListener("click", () => { modalEditar.close(); });
-
+//tobi, lo que me haces hacer.
 modalEditar.addEventListener("close", () => { liberarImagenTemporal(); });
